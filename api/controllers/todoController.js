@@ -2,7 +2,7 @@ import todo from '../models/todoModel.js'
 import { parseObjectId, toBool } from '../utils.js'
 
 export async function getTodos(req, res) {
-  const items = await todo.find(req, res)
+  const items = await todo.find()
   res.json(items)
 }
 
