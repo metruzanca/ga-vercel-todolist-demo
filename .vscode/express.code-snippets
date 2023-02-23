@@ -2,9 +2,7 @@
 	"Express Route Snippet": {
 		"prefix": "route",
 		"body": [
-			"router.${1:get}('/${2}', async (req, res) => {",
-			"  $0",
-			"})"
+			"router.${1:get}('/${2}', ${3})"
 		],
 		"description": "Express Route Snippet"
 	},
@@ -19,5 +17,14 @@
 			""
 		],
 		"description": "Mongoose Schema & Model"
+	},
+	"Express Controller": {
+		"prefix": "controller",
+		"body": [
+			"export async function ${1}(req, res) {",
+			"  $0",
+			"}"
+		],
+		"description": "Express Controller"
 	}
 }

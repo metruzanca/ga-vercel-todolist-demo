@@ -8,32 +8,79 @@
 # You'll need to switch to either `local` or `vercel` to get started.
 
 @baseUrl = {{host}}/api/
+###
+
+# ========== Todo Routes ==========
 
 @todo = {{baseUrl}}/todo
+@todoId = {{GetTodos.response.body.0._id}}
 
 # @name GetTodos
 GET {{todo}}
 ###
-@id = {{GetTodos.response.body.0._id}}
+
+
+
 
 # @name CreateTodo
 POST {{todo}}
 Content-Type: application/json
 
 {
-  "text": "New text Here"
+  "text": "New text Here",
+  "listId": "{{listId}}"
 }
-
 ###
+
+
 
 # @name UpdateTodoById
-PATCH {{todo}}/{{id}}?text=New Text
+PATCH {{todo}}/{{todoId}}
+Content-Type: application/json
+
+{
+  "text": "ddada"
+}
 ###
 
-# @name MakeTodoAsDone
-PATCH {{todo}}/{{id}}?done=true
-###
+
 
 # @name DeleteCompletedTodos
 DELETE {{todo}}/completed
+###
+
+# ========== List Routes ==========
+
+@list = {{baseUrl}}/list
+
+# @name CreateList
+POST {{list}}
+Content-Type: application/json
+
+{
+  "title": "New List"
+}
+###
+
+
+# @name GetLists
+GET {{list}}
+###
+
+@listId = {{CreateList.response.body._id}}
+
+
+# @name RenameList
+PATCH {{list}}/{{listId}}
+Content-Type: application/json
+
+{
+  "title": "Renamed List"
+}
+###
+
+
+
+# @name DeleteList
+DELETE {{list}}/{{listId}}
 ###

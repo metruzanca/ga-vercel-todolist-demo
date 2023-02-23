@@ -1,11 +1,18 @@
 import mongoose from 'mongoose'
 
+/** Makes sure the id is something mongoose doesn't complain about */
 export function parseObjectId(id) {
-  try {
-    return new mongoose.Types.ObjectId(id)
-  } catch (error) {
+  if (mongoose.Types.ObjectId.isValid(id)){
+    //@ts-ignore
+    return mongoose.Types.ObjectId(id)
+  } else {
     return null
   }
+  // try {
+  //   return mongoose.Types.ObjectId(id)
+  // } catch (error) {
+  //   return null
+  // }
 }
 
 /**
