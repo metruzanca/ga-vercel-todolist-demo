@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import List from './models/list.js'
-import Todo from './models/todo.js'
+import Todo from './models/todoModel.js'
 
 // Leave these 4 lines
 //@ts-ignore
