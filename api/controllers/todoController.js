@@ -1,4 +1,4 @@
-import todo from '../models/todo.js'
+import todo from '../models/todoModel.js'
 import { parseObjectId, toBool } from '../utils.js'
 
 export async function getTodos(req, res) {
@@ -15,24 +15,12 @@ export async function createTodo(req, res) {
   res.json(item)
 }
 
-export async function getTodoById(req, res) {
-  const _id = parseObjectId(req.params.id)
-  const item = await todo.find({ _id })
-  res.json(item)
-}
-
 export async function updateTodoById(req, res) {
   const _id = parseObjectId(req.params.id)
   const { text } = req.query
   // Mongoose doesn't auto convert to bool, we need to do it manually
   const done = toBool(req.query.done)
   const item = await todo.findByIdAndUpdate({ _id }, { text, done }, { new: true })
-  res.json(item)
-}
-
-export async function deleteTodoById(req, res) {
-  const _id = parseObjectId(req.params.id)
-  const item = await todo.findByIdAndDelete({ _id })
   res.json(item)
 }
 

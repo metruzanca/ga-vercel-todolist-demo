@@ -16,10 +16,6 @@ GET {{todo}}
 ###
 @id = {{GetTodos.response.body.0._id}}
 
-# @name GetTodoById
-GET {{todo}}/{{id}}
-###
-
 # @name CreateTodo
 POST {{todo}}
 Content-Type: application/json
@@ -36,10 +32,6 @@ PATCH {{todo}}/{{id}}?text=New Text
 
 # @name MakeTodoAsDone
 PATCH {{todo}}/{{id}}?done=true
-###
-
-# @name DeleteTodoById
-DELETE {{todo}}/{{id}}
 ###
 
 # @name DeleteCompletedTodos
