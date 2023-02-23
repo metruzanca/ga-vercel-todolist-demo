@@ -1,26 +1,25 @@
 import express from 'express'
+import morgan from 'morgan'
+import mongoose from 'mongoose'
 import lifecycle from './middleware/lifecycle.js'
+import apiRouter from './routes/index.js'
 
 const app = express()
 
+// Morgan is a logger, this gives us info on requests
+app.use(morgan('tiny'))
+app.use(express.json())
 app.use(lifecycle({
   async setup() {
-    console.log('Before handler')
-    // Put your database connection here. e.g.
-    // await mongoose.connect(process.env.DATABASE_URL)
+    mongoose.set('strictQuery', false)
+    //@ts-ignore
+    mongoose.connect(process.env.DATABASE_URL)
   },
   async cleanup() {
-    console.log('After handler')
-    // Put your database disconnection here. e.g.
-    // await mongoose.disconnect()
+    await mongoose.disconnect()
   }
 }))
 
-// Feel free to use a router and move this elsewhere.
-app.get('/api', async (req, res) => {
-  console.log(process.env.DATABASE_URL)
-  res.json({ message: 'Hello World' })
-})
+app.use('/api', apiRouter)
 
-// Don't use app.listen. Instead export app.
 export default app

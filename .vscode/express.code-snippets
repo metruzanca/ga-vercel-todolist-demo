@@ -1,0 +1,23 @@
+{
+	"Express Route Snippet": {
+		"prefix": "route",
+		"body": [
+			"router.${1:get}('/${2}', async (req, res) => {",
+			"  $0",
+			"})"
+		],
+		"description": "Express Route Snippet"
+	},
+	"Mongoose Schema & Model": {
+		"prefix": "schema-model",
+		"body": [
+			"export const ${1}Schema = new mongoose.Schema({",
+			"",
+			"})",
+			"",
+			"export default mongoose.model('${1/(.*)/${1:/capitalize}/}', ${1}Schema)",
+			""
+		],
+		"description": "Mongoose Schema & Model"
+	}
+}

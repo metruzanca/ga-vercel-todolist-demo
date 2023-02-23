@@ -9,4 +9,39 @@
 
 @baseUrl = {{host}}/api/
 
-GET {{baseUrl}}
+@todo = {{baseUrl}}/todo
+
+# @name GetTodos
+GET {{todo}}
+###
+@id = {{GetTodos.response.body.0._id}}
+
+# @name GetTodoById
+GET {{todo}}/{{id}}
+###
+
+# @name CreateTodo
+POST {{todo}}
+Content-Type: application/json
+
+{
+  "text": "New text Here"
+}
+
+###
+
+# @name UpdateTodoById
+PATCH {{todo}}/{{id}}?text=New Text
+###
+
+# @name MakeTodoAsDone
+PATCH {{todo}}/{{id}}?done=true
+###
+
+# @name DeleteTodoById
+DELETE {{todo}}/{{id}}
+###
+
+# @name DeleteCompletedTodos
+DELETE {{todo}}/completed
+###
