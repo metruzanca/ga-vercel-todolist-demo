@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import mongoose from 'mongoose'
 import List from './models/list.js'
 import Todo from './models/todoModel.js'
