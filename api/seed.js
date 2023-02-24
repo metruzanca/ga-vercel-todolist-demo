@@ -34,7 +34,7 @@ async function seed() {
 
   await User.deleteMany()
   await User.create({
-    username: 'samzanca',
+    username: 'admin',
     password,
   })
 }

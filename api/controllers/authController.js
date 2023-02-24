@@ -1,5 +1,6 @@
 import { hash, compare } from 'bcrypt'
-import { SALT_ROUNDS } from '../constants.js'
+import jwt from 'jsonwebtoken'
+import { JWT_SECRET, SALT_ROUNDS } from '../constants.js'
 import User from '../models/userModel.js'
 
 /*
@@ -29,17 +30,15 @@ export async function login(req, res) {
     })
   }
 
-  // TODO authenticate user
-}
+  const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' })
 
-export async function logout(req, res) {
-  // TODO dump cookie and delete session from usermodel
+  return res.json({ token })
 }
 
 export async function register(req, res) {
   const { username, password } = req.body
-  const user = await User.findOne({ username })
-  if (user) {
+  const foundUser = await User.findOne({ username })
+  if (foundUser) {
     return res.status(406).json({
       message: 'username already exists'
     })
@@ -47,6 +46,14 @@ export async function register(req, res) {
   const hashedPassword = await hash(password, SALT_ROUNDS)
   
   // TODO create user
+  const user = await User.create({
+    username,
+    password: hashedPassword,
+  })
+
+  const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' })
+
+  return res.json({ token })
 }
 
 export async function changePassword(req, res) {
@@ -77,8 +84,6 @@ export async function changePassword(req, res) {
   }
 
   return res.json({
-    message: 'Password updated. All other sessions have been logged out.'
+    message: 'Password updated.'
   })
-
-  // TODO delete all current sessions, except for this one.
 }

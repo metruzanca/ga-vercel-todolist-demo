@@ -6,4 +6,4 @@ export default router
 
 router.post('/login', controler.login)
 router.post('/register', controler.register)
-router.post('/logout', controler.logout)
+router.post('/changePassword', controler.changePassword)
