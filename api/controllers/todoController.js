@@ -8,11 +8,10 @@ export async function getTodos(req, res) {
 }
 
 async function addToList(item, listId) {
-  const _id = parseObjectId(listId)
-  await List.findOneAndUpdate(
-    { _id },
-    { $push: { items: item._id } }
-  )
+  const id = parseObjectId(listId)
+  await List.findByIdAndUpdate(id, {
+    $push: { items: item._id }
+  })
 }
 
 export async function createTodo(req, res) {
@@ -26,12 +25,12 @@ export async function createTodo(req, res) {
 }
 
 export async function updateTodoById(req, res) {
-  const _id = parseObjectId(req.params.id)
+  const id = parseObjectId(req.params.id)
   const { text, listId } = req.body
   // Mongoose doesn't auto convert to bool, we need to do it manually
   const done = toBool(req.query.done)
   const item = await Todo.findByIdAndUpdate(
-    { _id }, { text, done }, { new: true }
+    id, { text, done }, { new: true }
   )
   if (listId) await addToList(item, listId)
   res.json(item)

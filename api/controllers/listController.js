@@ -14,15 +14,15 @@ export async function createList(req, res) {
 }
 
 export async function updateList(req, res) {
-  const _id = parseObjectId(req.params.id)
+  const id = parseObjectId(req.params.id)
   const list = await List.findByIdAndUpdate(
-    { _id }, req.body, { new: true }
+    id, req.body, { new: true }
   )
   res.json(list)
 }
 
 export async function deleteList(req, res) {
-  const _id = parseObjectId(req.params.id)
-  const list = await List.findOneAndDelete({ _id })
+  const id = parseObjectId(req.params.id)
+  const list = await List.findOneAndDelete(id)
   res.json(list)
 }
