@@ -6,7 +6,7 @@ import apiRouter from './routes/index.js'
 
 const app = express()
 
-// Morgan is a logger, this gives us info on requests
+// Morgan is a logger, this gives us info in the console about requests we receive
 app.use(morgan('tiny'))
 app.use(express.json())
 app.use(lifecycle({
