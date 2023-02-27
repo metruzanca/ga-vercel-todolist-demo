@@ -1,4 +1,5 @@
 //@ts-nocheck
+// This is a css utility: https://www.npmjs.com/package/clsx
 import clsx from 'https://cdn.skypack.dev/clsx'
 
 const BUTTON = {
