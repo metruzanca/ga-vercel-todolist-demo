@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { DATABASE_URL } from './constants'
+import { DATABASE_URL } from './constants.js'
 
 /** Makes sure the id is something mongoose doesn't complain about */
 export function parseObjectId(id) {
