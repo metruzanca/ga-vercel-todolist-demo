@@ -6,5 +6,5 @@ const apiRouter = Router()
 export default apiRouter
 
 apiRouter.use('/todo', todoRouter)
-apiRouter.use('/list', listRouter)
+// apiRouter.use('/list', listRouter)
 // apiRouter.use('/auth', authRouter)
