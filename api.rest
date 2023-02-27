@@ -84,3 +84,26 @@ Content-Type: application/json
 # @name DeleteList
 DELETE {{list}}/{{listId}}
 ###
+
+
+# ========== Auth Routes ==========
+
+@auth = {{baseUrl}}/auth
+
+POST {{auth}}/register
+Content-Type: application/json
+
+{
+  "username":"shaken",
+  "password":"password123"
+}
+###
+
+POST {{auth}}/login
+Content-Type: application/json
+
+{
+  "username":"shaken",
+  "password":"password123"
+}
+###

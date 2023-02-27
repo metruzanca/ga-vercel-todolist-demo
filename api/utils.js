@@ -17,3 +17,10 @@ export function parseObjectId(id) {
 export function toBool(bool) {
   return bool === 'true'
 }
+
+export function dbConnect() {
+  // As it turns out, lifecycle function is not needed
+  mongoose.set('strictQuery', false)
+  //@ts-ignore
+  mongoose.connect(process.env.DATABASE_URL)
+}
