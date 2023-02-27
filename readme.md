@@ -1,10 +1,9 @@
 # Vercel Express MongoDB - Todolist example
 
-Todolist API allows managing a list of todos. Once checked off, its possible to delete all completed todos.
+This API allows the creation of Users, each with their own todolist. Each user then has full CRUD on their tasks.
 
-When a frontend is implemented, it will be served on `/`, meanwhile all API routes are on the BASE_URL of `/api/`.
+The frontend is served on `/`, meanwhile the API is on `/api/`.
 
-Heres all the supported API routes.
 
 | Method   | URL               | Path   | Description                                                    |
 | -------- | ----------------- | ------ | -------------------------------------------------------------- |
