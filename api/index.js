@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
-import apiRouter from './routes/index.js'
-import { dbConnect } from './utils.js'
+import apiRouter from '../src/routes/index.js'
+import { dbConnect } from '../src/utils.js'
 
 const app = express()
 

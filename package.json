@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "vercel env pull .env",
     "start": "vercel dev",
-    "build": "node ./api/seed.js"
+    "build": "node src/seed.js"
   },
   "license": "MIT",
   "dependencies": {

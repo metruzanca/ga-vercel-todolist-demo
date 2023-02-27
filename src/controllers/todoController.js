@@ -1,5 +1,5 @@
-import List from '../models/listModel.js'
-import Todo from '../models/todoModel.js'
+import List from '../../src/models/listModel.js'
+import Todo from '../../src/models/todoModel.js'
 import { parseObjectId, toBool } from '../utils.js'
 
 export async function getTodos(req, res) {

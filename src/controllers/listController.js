@@ -1,4 +1,4 @@
-import List from '../models/listModel.js'
+import List from '../../src/models/listModel.js'
 import { parseObjectId } from '../utils.js'
 
 export async function getLists(req, res) {
