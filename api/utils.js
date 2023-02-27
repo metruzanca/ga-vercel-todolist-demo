@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { DATABASE_URL } from './constants'
 
 /** Makes sure the id is something mongoose doesn't complain about */
 export function parseObjectId(id) {
@@ -19,8 +20,6 @@ export function toBool(bool) {
 }
 
 export function dbConnect() {
-  // As it turns out, lifecycle function is not needed
   mongoose.set('strictQuery', false)
-  //@ts-ignore
-  mongoose.connect(process.env.DATABASE_URL)
+  mongoose.connect(DATABASE_URL)
 }

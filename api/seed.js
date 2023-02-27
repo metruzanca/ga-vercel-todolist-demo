@@ -4,11 +4,9 @@ import bcrypt from 'bcrypt'
 import List from './models/listModel.js'
 import Todo from './models/todoModel.js'
 import User from './models/userModel.js'
-import { SALT_ROUNDS } from './constants.js'
+import { DATABASE_URL, SALT_ROUNDS } from './constants.js'
 
-// Leave these 4 lines
-//@ts-ignore
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect(DATABASE_URL)
 mongoose.set('strictQuery', false)
 await seed()
 await mongoose.disconnect()
