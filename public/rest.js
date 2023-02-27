@@ -1,19 +1,17 @@
 const BASE_URL = '/api'
 
-export async function getItems() {
-  const data = await fetch(`${BASE_URL}/todo`)
-  const todos = await data.json()
-  return todos
-}
+export const todo = {
+  async getItems() {
+    const data = await fetch(`${BASE_URL}/todo`)
+    return data.json()
+  },
+  async createTodo() {},
+  async updateTodo() {},
+  async deleteCompleted() {},
+};
 
-export async function createTodo() {
-
-}
-
-export async function updateTodo() {
-  
-}
-
-export async function deleteCompleted() {
-
+export const auth = {
+  async login() {},
+  async register() {},
+  async changePassword() {},
 }
