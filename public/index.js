@@ -5,6 +5,7 @@ import { List, TodoForm } from './components.js'
 const app = document.getElementById('app')
 app.className = 'px-2'
 
+// Styling is done via Tailwind CSS, which adds a bunch of pre-made classes
 
 renderItems()
 async function renderItems() {
